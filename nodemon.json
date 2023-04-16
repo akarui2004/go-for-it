@@ -1,0 +1,12 @@
+{
+  "watch": ["src", "toml"],
+  "ext": "ts, toml",
+  "execMap": {
+    "ts": "ts-node"
+  },
+  "ignore": [
+    "node_modules/**/*",
+    "scripts/**/*"
+  ],
+  "delay": 500
+}
