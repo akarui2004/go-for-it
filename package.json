@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/server.ts",
     "build": "tsc --project ./tsconfig.json && tscpaths --silent -p ./tsconfig.json -s ./ -o ./dist",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "run": "ts-node -r tsconfig-paths/register"
   },
   "license": "ISC",
   "dependencies": {
