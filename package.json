@@ -4,11 +4,13 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/server.ts",
-    "build": "tsc --project ./tsconfig.json && tscpaths --silent -p ./tsconfig.json -s ./ -o ./dist",
-    "clean": "rimraf ./dist"
+    "build": "yarn clean && tsc --project ./tsconfig.json && tscpaths --silent -p ./tsconfig.json -s ./ -o ./dist",
+    "clean": "rm -rdf ./dist",
+    "script": "ts-node -r tsconfig-paths/register"
   },
   "license": "ISC",
   "dependencies": {
+    "@xascode/tscpaths": "^0.1.4",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "express": "^4.18.2",
