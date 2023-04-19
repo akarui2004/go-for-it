@@ -1,3 +1,5 @@
-import { ROOT } from "src/config";
+require("../../src/init");
 
-console.log(ROOT);
+import config from "src/config";
+
+console.log(config.owner);
