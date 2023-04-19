@@ -1,2 +1,12 @@
 [env]
   port = 8383
+
+[database]
+  [database.info]
+    name = "todos"
+    host = "127.0.0.1"
+    port = "3306"
+    dialect = "mysql"
+  [database.user]
+    username = "root"
+    password = "root"

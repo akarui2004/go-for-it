@@ -4,7 +4,7 @@ import express from "express";
 import config from "./config";
 import { DEFAULTS } from "./constants";
 import routes from "./routes";
-import logger from "./utils/logger";
+import { dbSequelize, logger } from "./utils";
 
 (async () => {
   const app = express();
@@ -15,8 +15,17 @@ import logger from "./utils/logger";
 
   const port = config?.env?.port ?? DEFAULTS.PORT;
 
-  app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-    logger.info(`Server is running at http://localhost`, { port });
-  });
+  dbSequelize
+  .sync()
+  .then(() => {
+    console.log("Databae connection established successfully.");
+    app.listen(port, () => {
+      console.log(`Server is running at http://localhost:${port}`);
+      logger.info(`Server is running at http://localhost`, { port });
+    });
+  })
+  .catch((err) => {
+    console.log("Unable to connect to database.");
+    logger.error("Unable to connect to database:", err);
+  })
 })();
