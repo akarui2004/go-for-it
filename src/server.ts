@@ -4,6 +4,7 @@ import express from "express";
 import config from "./config";
 import { DEFAULTS } from "./constants";
 import routes from "./routes";
+import logger from "./utils/logger";
 
 (async () => {
   const app = express();
@@ -16,5 +17,6 @@ import routes from "./routes";
 
   app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
+    logger.info(`Server is running at http://localhost`, { port });
   });
 })();
