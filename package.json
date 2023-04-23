@@ -5,8 +5,10 @@
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/server.ts",
     "build": "yarn clean && tsc --project ./tsconfig.json && tscpaths --silent -p ./tsconfig.json -s ./ -o ./dist",
+    "prod": "yarn build && node ./dist/src/server.js",
     "clean": "rm -rdf ./dist",
-    "script": "ts-node -r tsconfig-paths/register"
+    "script": "ts-node -r tsconfig-paths/register",
+    "migrate:generate": "npx sequelize-cli migration:generate"
   },
   "license": "ISC",
   "dependencies": {
