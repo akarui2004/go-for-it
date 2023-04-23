@@ -10,3 +10,5 @@
   [database.user]
     username = "root"
     password = "root"
+  [database.time]
+    timezone = "+08:00"

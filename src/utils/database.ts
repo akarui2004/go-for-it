@@ -9,6 +9,11 @@ const sequelize = new Sequelize({
   host: config?.database?.info?.host,
   port: numberOrZero(config?.database?.info?.port),
   dialect: "mysql",
+  timezone: config?.database?.time?.timezone,
+  dialectOptions: {
+    supportBigNumbers: true,
+    bigNumberStrings: true
+  }
 });
 
 export default sequelize;
