@@ -90,3 +90,6 @@
 ### INSTALLATION NOTE
 - Copy from file base.toml to development.toml that can run the source in the local
 - If we are running in the PROD, we need to set the process.env.NODE_ENV
+
+### TODOs:
+- We need to create custom migration file

@@ -8,7 +8,10 @@
     "prod": "yarn build && node ./dist/src/server.js",
     "clean": "rm -rdf ./dist",
     "script": "ts-node -r tsconfig-paths/register",
-    "migrate:generate": "npx sequelize-cli migration:generate"
+    "db:seed": "yarn script scripts/sequelize/seeder",
+    "migrate:generate": "yarn script scripts/sequelize/migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
   },
   "license": "ISC",
   "dependencies": {
