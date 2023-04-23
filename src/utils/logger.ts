@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import winston from "winston";
 import winstonDaily from "winston-daily-rotate-file";
 
@@ -15,7 +16,9 @@ const customFormat = winston.format.printf(({
   message,
   label = '',
   ...meta
-}) => `[${timestamp}] ${level} ${label} ${message} ${formatMeta(meta)}`)
+}) => `[${timestamp}] ${level} ${label} ${message} ${formatMeta(meta)}`);
+
+const auditFolder = format(new Date(), "yyyy-MM");
 
 const logger = winston.createLogger({
   level: "info",
@@ -25,7 +28,7 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winstonDaily({
-      filename: "./logs/application-%DATE%.log",
+      filename: `./logs/${auditFolder}/%DATE%.log`,
       datePattern: "YYYY-MM-DD",
       zippedArchive: true,
       maxSize: "20m",
