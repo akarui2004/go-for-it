@@ -18,7 +18,7 @@ import { dbSequelize, logger } from "./utils";
   dbSequelize
   .sync()
   .then(() => {
-    console.log("Databae connection established successfully.");
+    console.log("Database connection established successfully.");
     app.listen(port, () => {
       console.log(`Server is running at http://localhost:${port}`);
       logger.info(`Server is running at http://localhost`, { port });
