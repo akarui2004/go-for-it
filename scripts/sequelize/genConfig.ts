@@ -3,6 +3,7 @@ require("../../src/init");
 import fs from "fs";
 import path from "path";
 import config from "src/config";
+import { NODE_ENV } from "src/constants";
 import { DBConfItem, SimpleMap } from "src/types";
 
 const genConfig = async () => {
@@ -14,7 +15,7 @@ const genConfig = async () => {
     const { username, password } = config?.database?.user;
     const { timezone } = config?.database?.time;
 
-    dbConfJson["development"] = {
+    dbConfJson[NODE_ENV] = {
       username, password,
       host, port, dialect,
       database: name,

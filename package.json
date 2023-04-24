@@ -8,14 +8,18 @@
     "prod": "yarn build && node ./dist/src/server.js",
     "clean": "rm -rdf ./dist",
     "script": "ts-node -r tsconfig-paths/register",
-    "db:seed": "yarn script scripts/sequelize/seeder",
+    "db:reconfigure": "yarn script scripts/sequelize/genConfig",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
     "migrate:generate": "yarn script scripts/sequelize/migrate",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
+    "seed:generate": "yarn script scripts/sequelize/seeder"
   },
   "license": "ISC",
   "dependencies": {
+    "@types/cli-color": "^2.0.2",
     "@xascode/tscpaths": "^0.1.4",
+    "cli-color": "^2.0.3",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "express": "^4.18.2",
