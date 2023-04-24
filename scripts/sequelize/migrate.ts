@@ -6,14 +6,14 @@ import clc from "cli-color";
 const migrate = async () => {
   const argvs: string[] = process.argv;
   if (argvs.length <= 2) {
-    console.log("Expected at least one arguments!");
-    process.exit(1);
+    console.log(clc.redBright("Expected at least one arguments!"));
+    process.exit(128);
   }
 
   const nameIndex: number = argvs.indexOf("--name");
   if (nameIndex <= -1) {
-    console.log("The --name is expected.");
-    process.exit(1);
+    console.log(clc.redBright("The --name is expected."));
+    process.exit(128);
   }
 
   let migrationName: string = argvs[nameIndex + 1];
