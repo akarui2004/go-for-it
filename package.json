@@ -8,7 +8,7 @@
     "prod": "yarn build && node ./dist/src/server.js",
     "clean": "rm -rdf ./dist",
     "script": "ts-node -r tsconfig-paths/register",
-    "db:reconfigure": "yarn script scripts/sequelize/genConfig",
+    "db:reconfigure": "yarn script scripts/sequelize/genConfig && yarn build",
     "db:migrate": "yarn build && npx sequelize-cli db:migrate",
     "db:migrate:undo": "yarn build && npx sequelize-cli db:migrate:undo",
     "db:migrate:undo:all": "yarn build && npx sequelize-cli db:migrate:undo:all",
