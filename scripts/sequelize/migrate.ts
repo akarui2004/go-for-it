@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import clc from "cli-color";
 
-const migrate = async () => {
+(async () => {
   const argvs: string[] = process.argv;
   if (argvs.length <= 2) {
     console.log(clc.redBright("Expected at least one arguments!"));
@@ -31,6 +31,4 @@ const migrate = async () => {
     console.log(clc.red("Migration file failed to generate!"));
     console.log(clc.red([error?.message, migrationName]));
   }
-}
-
-migrate();
+})().catch(console.error).finally(() => process.exit(0));
