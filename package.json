@@ -9,9 +9,9 @@
     "clean": "rm -rdf ./dist",
     "script": "ts-node -r tsconfig-paths/register",
     "db:reconfigure": "yarn script scripts/sequelize/genConfig",
-    "db:migrate": "npx sequelize-cli db:migrate",
-    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "db:migrate": "yarn build && npx sequelize-cli db:migrate",
+    "db:migrate:undo": "yarn build && npx sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "yarn build && npx sequelize-cli db:migrate:undo:all",
     "migrate:generate": "yarn script scripts/sequelize/migrate",
     "seed:generate": "yarn script scripts/sequelize/seeder"
   },
