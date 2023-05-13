@@ -2,22 +2,19 @@
 
 ## What we will have in this application?
 
-### Authentication
+### Authentication/Credential
 - Register user to the application
 - Reset password
 - Forgot password
 - User will have: uuid, first_name, last_name, created_at, updated_at, deleted_at
-- Credential will have: uuid, user_id, username, email, password, created_at, updated_at, deleted_at
+- Credential will have: uuid, user_id, username, password, created_at, updated_at, deleted_at
+- Request Password:
+  - The data will be store when request the password changed
+  - Will have: uuid, owner_id, token, alreadReset, expiredAt, createdAt, updatedAt
 
 ### User with Project and Task
 - User can have many projects
 - User can have many tasks through project
-
-### User with Priority
-- User can have many priorities
-
-### User with Tag
-- User can have many tags
 
 ### Project
 - Start on the left hand side
@@ -26,12 +23,6 @@
 - Project will have: uuid, title, position, create_at, updated_at, deleted_at
 - Project may be have multiple tags (**will implement in the future**)
 - Project belongs to user
-
-### Priority
-- Will have 4 master priority and can't be CRUD this.
-- 4 master priority: low, normal, high, highest
-- Priority belongs to user
-- Priority will have: uuid, user_id, title, color, is_master, created_at, updated_at, deleted_at
 
 ### Task
 - CRUD a task
@@ -42,29 +33,30 @@
 - Task will have: uuid, priority_id, project_id, title, description, status, start_time, end_time, created_at, updated_at, deleted_at
 
     - Status will be open, in-progress, completed and archived
+        - Backlog: task stay back and will be 
         - Open: new task
         - In-progress: working task
         - Completed: complete task
         - Archived: archive task. We will have a link or a button that direct to archived list view and can recover a archived task
 
-    - Start Time: can null. This is the start time of the task.
-        - 10 mins notification before start task: "The task will start at hh:mm."
+- Estimate time: estimate the time to complete the task, store in database as minute --> will convert to `x day y hour z minute v seconds`
+- Start date: the date where the task will be start
+- End date: the date where the task will be end
+- Due date: the real date that the task will be completed and deliver to client
 
-    - End Time: can null. This is the end time of the task.
-        - 10 mins notification before end task: "The task will end at hh:mm."
-        - 1 mins or 30 second notification after end task: "The task has been ended."
-
-- Priority: low, normal, high, highest. This will map to priority table
+- Priority will have the level from 0 to 5
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
 
 ### Tag
 - CRUD a tag
 - Tag belongs to user
 - Tag will have: uuid, user_id, title, color, created_at, updated_at, deleted_at
 - Tag belong to many tasks => we will have a taggable
-
-### Project Has Tag
-- Project can have many tags
-- ProjectHasTag will have: uuid, project_id, tag_id
 
 ### Task Has Tag
 - Task can have many tags
@@ -77,7 +69,7 @@
 - NodeJS
 - ExpressJS
 - Sequelize
-- MySQL
+- PostgreSQL
 
 ## Database
 
