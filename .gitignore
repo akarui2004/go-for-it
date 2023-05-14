@@ -106,4 +106,4 @@ dist
 # Source code configuration
 config/local.toml
 config/prod.toml
-config/database.json
+config/sql.js
