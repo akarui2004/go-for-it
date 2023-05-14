@@ -1,16 +1,13 @@
 import clc from "cli-color";
 import { DataTypes, QueryInterface } from 'sequelize';
+import { ModelUtils } from "src/utils";
 
 module.exports = {
   up: (queryInterface: QueryInterface): Promise<void> => queryInterface.sequelize.transaction(
     async (transaction) => {
       console.log(clc.blueBright("Create users table!"));
       await queryInterface.createTable("users", {
-        id: {
-          type: DataTypes.UUID,
-          primaryKey: true,
-          allowNull: false,
-        },
+        ...ModelUtils.standardColumns(),
         firstName: {
           type: DataTypes.STRING,
           allowNull: false,
@@ -22,12 +19,6 @@ module.exports = {
         cellPhone: {
           type: DataTypes.STRING,
           allowNull: false,
-        },
-        createdAt: {
-          type: DataTypes.DATE,
-        },
-        updatedAt: {
-          type: DataTypes.DATE,
         },
         deletedAt: {
           type: DataTypes.DATE,

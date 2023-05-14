@@ -1,15 +1,19 @@
+import clc from "cli-color";
 import { DataTypes, QueryInterface } from 'sequelize';
+import { ModelUtils } from "src/utils";
 
 module.exports = {
   up: (queryInterface: QueryInterface): Promise<void> => queryInterface.sequelize.transaction(
     async (transaction) => {
       // here go all migration changes
+      console.log(clc.blueBright("Create xxx table!"));
     }
   ),
 
   down: (queryInterface: QueryInterface): Promise<void> => queryInterface.sequelize.transaction(
     async (transaction) => {
       // here go all migration undo changes
+      console.log(clc.yellowBright("Drop xxx table!"));
     }
   )
 };
