@@ -8,11 +8,13 @@ const sequelize = new Sequelize({
   password: config?.database?.user?.password,
   host: config?.database?.info?.host,
   port: numberOrZero(config?.database?.info?.port),
-  dialect: "mysql",
+  dialect: config?.database?.info?.dialect ?? "postgres",
   timezone: config?.database?.time?.timezone,
-  dialectOptions: {
-    supportBigNumbers: true,
-    bigNumberStrings: true
+  pool: {
+    max: config?.database?.pool?.max,
+    min: config?.database?.pool?.min,
+    acquire: config?.database?.pool?.acquire,
+    idle: config?.database?.pool?.idle,
   }
 });
 
