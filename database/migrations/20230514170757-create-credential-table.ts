@@ -22,11 +22,11 @@ module.exports = {
             key: "id",
           }
         },
-        username: {
+        userName: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        password: {
+        passWord: {
           type: DataTypes.TEXT,
           allowNull: false,
         },

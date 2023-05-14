@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
 class Model {
-  standardColumns() {
+  public standardColumns() {
     return {
       id: {
         type: DataTypes.UUID,
