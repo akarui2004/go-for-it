@@ -20,7 +20,7 @@
 - Start on the left hand side
 - The project will have many todos board view
 - CRUD a project
-- Project will have: uuid, title, position, create_at, updated_at, deleted_at
+- Project will have: uuid, title, position, create_at, updated_at, deleted_at, publishedAt
 - Project may be have multiple tags (**will implement in the future**)
 - Project belongs to user
 
