@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import config from "src/config";
 import { numberOrZero } from "./number";
 
-const sequelize = new Sequelize({
+const dbSequelize = new Sequelize({
   database: config?.database?.info?.name,
   username: config?.database?.user?.username,
   password: config?.database?.user?.password,
@@ -18,4 +18,4 @@ const sequelize = new Sequelize({
   }
 });
 
-export default sequelize;
+export default dbSequelize;

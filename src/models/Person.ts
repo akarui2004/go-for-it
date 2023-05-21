@@ -20,6 +20,7 @@ Person.init({
   id: {
     type: DataTypes.UUID,
     allowNull: false,
+    primaryKey: true,
   },
   email: {
     type: DataTypes.STRING,
@@ -44,10 +45,11 @@ Person.init({
 }, {
   modelName: Person.TABLE_NAME,
   paranoid: true,
-  sequelize: dbSequelize
+  sequelize: dbSequelize,
+  freezeTableName: true,
 });
 
-Person.addHook("beforeCreate", (model: Person, options) => {
+Person.addHook("beforeValidate", (model: Person, options) => {
   if (!model.id)
     model.id = StringUtils.uuidv1();
 });

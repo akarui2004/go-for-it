@@ -1,4 +1,7 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Transaction } from "sequelize";
+import dbSequelize from "./database";
+
+type TransactionFunction<T> = (transaction: Transaction) => Promise<T>;
 
 class Model {
   public standardColumns() {
@@ -14,6 +17,21 @@ class Model {
       updatedAt: {
         type: DataTypes.DATE,
       },
+    }
+  }
+
+  public async runTransaction<T>(fn: TransactionFunction<T>) {
+    const transaction = await dbSequelize.transaction();
+
+    try {
+      const result = await fn(transaction);
+
+      await transaction.commit();
+
+      return result;
+    } catch (error) {
+      await transaction.rollback();
+      throw error;
     }
   }
 }

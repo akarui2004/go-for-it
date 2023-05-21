@@ -14,6 +14,7 @@ Entity.init({
   id: {
     type: DataTypes.UUID,
     allowNull: false,
+    primaryKey: true,
   },
   ownerId: {
     type: DataTypes.UUID,

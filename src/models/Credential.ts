@@ -28,6 +28,7 @@ Credential.init({
   id: {
     type: DataTypes.UUID,
     allowNull: false,
+    primaryKey: true,
   },
   ownerId: {
     type: DataTypes.UUID,
@@ -42,7 +43,7 @@ Credential.init({
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM,
+    type: DataTypes.ENUM("yes", "no"),
   }
 }, {
   tableName: Credential.TABLE_NAME,
@@ -50,7 +51,7 @@ Credential.init({
   sequelize: dbSequelize,
 });
 
-Credential.addHook("beforeCreate", (model: Credential, options) => {
+Credential.addHook("beforeValidate", (model: Credential, options) => {
   if (!model.id)
     model.id = StringUtils.uuidv5(model.ownerId);
 });
